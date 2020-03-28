@@ -1,23 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
-
-<h1>Getting server updates</h1>
-<div id="result"></div>
-
-<script>
-if(typeof(EventSource) !== "undefined") {
-  var source = new EventSource("query.php");
-  source.onmessage = function(event) {
-    document.getElementById("result").innerHTML += event.data + "<br>";
-  };
-  source.addEventListener('message1', function(e) {
-    document.getElementById("result").innerHTML += e.data + "<br>";
-  }, false);
-} else {
-  document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-}
-</script>
-
-</body>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <input id="m" autocomplete="off" />
+    <button id="adduser">Add User</button>
+    <button id="addword">Add Word</button>
+    <button id="lock">Lock</button>
+    <button id="unlock">Unlock</button>
+    <input id="m2" autocomplete="off" />
+    <button id="addqa">Add QA</button>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        var socket = io();
+        var name = "none";
+        $('#adduser').click(function(){
+          name = $('#m').val();
+          socket.emit('add user', name);
+          $('#m').val('');
+          return false;
+        });
+        $('#addword').click(function(){
+          socket.emit('add word', name, $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        $('#lock').click(function(){
+          socket.emit('lock question', name);
+          return false;
+        });
+        $('#unlock').click(function(){
+          socket.emit('unlock question', name);
+          return false;
+        });
+        $('#addqa').click(function(){
+          socket.emit('handle qa', name, $('#m').val(), $('#m2').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
+    </script>
+  </body>
 </html>
