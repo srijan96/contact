@@ -15,7 +15,8 @@
     <button id="unlock">Unlock</button>
     <button id="addqa">Add QA</button>
     <button id="contact">Contact</button>
-    <button id="answer">Answer</button>
+    <button id="answer">Answer</button></br>
+    <button id="test">Test</button></button>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -58,6 +59,26 @@
         $('#answer').click(function(){
           socket.emit('handle answer', name, $('#m').val());
           $('#m').val('');
+          return false;
+        });
+        $('#test').click(function(){
+          socket.emit('add user', "srijan");
+          socket.emit('add user', "suku");
+          socket.emit('add user', "barua");
+          socket.emit('start', "srijan");
+          socket.emit('add word', "srijan", "ass");
+          socket.emit('lock question', "suku");
+          socket.emit('handle qa', "suku", "a", "b");
+          socket.emit('handle contact', "barua", "b");
+          socket.emit('handle answer', "srijan", "b");
+          socket.emit('lock question', "suku");
+          socket.emit('handle qa', "suku", "a", "b");
+          socket.emit('handle contact', "barua", "b");
+          socket.emit('handle answer', "srijan", "c");
+          socket.emit('lock question', "suku");
+          socket.emit('handle qa', "suku", "a", "b");
+          socket.emit('handle contact', "barua", "b");
+          socket.emit('handle answer', "srijan", "c");
           return false;
         });
         socket.on('chat message', function(msg){

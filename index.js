@@ -105,29 +105,37 @@ io.on('connection', function(socket){
   socket.on('handle contact', function(user, ans){
     if(lockState == user) {
       io.emit('chat message', "contact failed, question asked by self");
+      console.log(contacts);
     }
     else if(user == leaderBoard[currentThinker - 1][0]) {
       io.emit('chat message', "contact failed, thinker is self");
+      console.log(contacts);
     }
     else {
-      contacts.push(user, ans);
+      contacts.push([user, ans]);
       io.emit('chat message', "contact by " + user);
       socket.emit('chat message', "contact by " + user + " " + ans);
+      console.log(contacts);
     }
+    console.log(contacts);
   });
   socket.on('handle answer', function(user, ans){
+    console.log("119");
     if(user != leaderBoard[currentThinker - 1][0]) {
       io.emit('chat message', "answer failed, not thinker" + user);
     }
     else {
+      console.log("124" + contacts.length);
       var valid_contacts = false;
       var res = "Canceled";
       for(var i=0; i<contacts.length; i++) {
+        console.log(contacts[i][1] + current_answer);
         if(contacts[i][1] == current_answer) {
           valid_contacts = true;
           break;
         }
       }
+      console.log("134");
       if(ans == current_answer) {
         res = "Passed";
       } else if(valid_contacts == true) {
@@ -140,6 +148,11 @@ io.on('connection', function(socket){
       lockState = "";
       io.emit('chat message', res + current_word.substring(0,revealed_length));
   } 
+  console.log("147");
+  for(var i=0; i<contacts.length; i++)
+    contacts[i].splice(0);
+  contacts.splice(0);
+  current_question = "";
 	logState();
   });
 });
