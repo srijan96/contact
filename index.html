@@ -6,12 +6,16 @@
   <body>
     <ul id="messages"></ul>
     <input id="m" autocomplete="off" />
+    <input id="m2" autocomplete="off" /></br>
     <button id="adduser">Add User</button>
+    <button id="start">Start</Button>
+    <button id="adduser">Add User</button></button>
     <button id="addword">Add Word</button>
     <button id="lock">Lock</button>
     <button id="unlock">Unlock</button>
-    <input id="m2" autocomplete="off" />
     <button id="addqa">Add QA</button>
+    <button id="contact">Contact</button>
+    <button id="answer">Answer</button>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -22,6 +26,10 @@
           name = $('#m').val();
           socket.emit('add user', name);
           $('#m').val('');
+          return false;
+        });
+        $('#start').click(function(){
+          socket.emit('start', name);
           return false;
         });
         $('#addword').click(function(){
@@ -39,6 +47,16 @@
         });
         $('#addqa').click(function(){
           socket.emit('handle qa', name, $('#m').val(), $('#m2').val());
+          $('#m').val('');
+          return false;
+        });
+        $('#contact').click(function(){
+          socket.emit('handle contact', name, $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        $('#answer').click(function(){
+          socket.emit('handle answer', name, $('#m').val());
           $('#m').val('');
           return false;
         });
