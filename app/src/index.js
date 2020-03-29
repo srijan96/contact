@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Login from './components/Login/login';
+import HomePage from './components/GamePage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <HomePage />
   </React.StrictMode>,
   document.getElementById('root')
 );
