@@ -15,6 +15,7 @@ var contacts = [];
 var leaderBoard = [];
 var lockState = "";
 var currentThinker = 0;
+var gameStarted = false;
 
 function logState() {
 	console.log("========================");
@@ -37,13 +38,12 @@ io.on('connection', function(socket){
     } else {
   	  leaderBoard.push([user,0]);
       io.emit('chat message', "add user" + user);
-      socket.emit('login successful', leaderBoard);
+      socket.emit('login successful', gameStarted);
+      io.emit("refresh data", leaderBoard);
     }
     logState();
   });
-  socket.on("poll", function(){
-    socket.emit("update",leaderBoard);
-  });
+
   socket.on('start', function(){
     if(leaderBoard.length == 0) {
       io.emit('chat message', "game start failed");
@@ -55,6 +55,7 @@ io.on('connection', function(socket){
     } else {
       io.emit('chat message', "currentThinker " + currentThinker + leaderBoard[currentThinker][0]);
       currentThinker++;
+      gameStarted = true;
       io.emit('game started', leaderBoard[currentThinker - 1][0]);
     }
     logState();
@@ -64,15 +65,18 @@ io.on('connection', function(socket){
   	current_word = word;
     io.emit('chat message', "add word by " + user);
     socket.emit('chat message', "add word by " + user + " " + word);
-    io.emit('word added', user);
+    io.emit('enable question');
+    io.emit('reveal word',current_word.substring(0,revealed_length));
     logState();
   });
   //Handle Lock
   socket.on('lock question', function(user){
     if(lockState == "") {
     	lockState = user;
-    	io.emit('chat message', "locked by " + user);
-    } else {
+      io.emit('chat message', "locked by " + user);
+      socket.emit('ask question');
+      io.emit('disable question');
+     } else {
     	io.emit('chat message', "Already locked by " + lockState);
     }
     logState();
@@ -84,7 +88,8 @@ io.on('connection', function(socket){
 		io.emit('chat message', "unlocked by " + user);
 		lockState = "";
 		current_question = "";
-		current_answer = "";
+    current_answer = "";
+    io.emit('enable question');
     } else {
 		io.emit('chat message', "Unlock Failed. Not locked by " + user);
     }
@@ -102,7 +107,8 @@ io.on('connection', function(socket){
 	  	current_answer = ans;
 	  	contacts = [];
 	    io.emit('chat message', "added question by " + user + " " + question);
-	    socket.emit('chat message', "added question " + question + " " + ans);
+      socket.emit('chat message', "added question " + question + " " + ans);
+      io.emit('question added', user, current_question);
     }
 	});
   socket.on('handle contact', function(user, ans){
@@ -150,6 +156,8 @@ io.on('connection', function(socket){
       }
       lockState = "";
       io.emit('chat message', res + current_word.substring(0,revealed_length));
+      io.emit('enable question');
+      io.emit('reveal word',current_word.substring(0,revealed_length));
   } 
   console.log("147");
   for(var i=0; i<contacts.length; i++)
