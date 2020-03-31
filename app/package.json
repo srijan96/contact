@@ -11,16 +11,14 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
-
   "watch": {
     "build": {
       "patterns": [
         "src"
       ],
-    "extensions": "js,jsx"
+      "extensions": "js,jsx"
     }
   },
-    
   "scripts": {
     "watch": "npm-watch",
     "start": "react-scripts start",
@@ -37,7 +35,7 @@
       "not dead",
       "not op_mini all"
     ],
-"development": [
+    "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
