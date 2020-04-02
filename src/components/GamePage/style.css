@@ -1,0 +1,180 @@
+
+body{
+    height: 100%;
+    width: 100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    background-color: #052e5c;
+}
+
+.leaderBoard{
+    float: left;
+    background-color: #042449;
+    color:#71eeb8;
+    width: 25vw;
+    height: 100vh;
+    overflow: hidden;
+    text-align:center;
+}
+
+.homePageWrapper{
+    background-color: #052e5c;
+    width:50vw;
+    height:100vh;
+    float: left;
+    color:220077;
+}
+
+.revealedColor{
+    display: inline-block;
+    color: #f9a602;
+    white-space: nowrap;
+}
+
+.remainingColor{
+    display: inline-block;
+    color: #71eeb8;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    margin-left: -.25em;
+}
+
+.messageBoard
+{
+    float: left;
+    background-color: #71eeb8;
+    color:#002266;
+    width: 25vw;
+    height: 100vh;
+    overflow: hidden;
+    text-align:center;
+}
+
+.centralItem {
+    float: left;
+    background-color: #042449;
+    color:#71eeb8;
+    width: 40vw;
+    padding: 2vh 5vw;
+    margin:2vh 5vw;
+    min-height:20vh;
+    box-sizing:border-box;
+    text-align: center;
+    border-radius: 2vw;
+}
+
+.centralItem input {
+    background-color: #ffffff;
+    width: 30vw;
+    margin: 2vh auto;
+    padding:2vh 2vw;
+    box-sizing:border-box;
+    text-align: center;
+    border-radius: 1vw;
+    opacity:0.8;
+}
+.centralItem button {
+    background-color: #71eeb8;
+    color:#042449;
+    width: 20vw;
+    margin:3vh 5vw;
+    height: 10vh;
+    float:left;
+    text-align: center;  
+    border-radius: 1vw;
+}
+
+.word{
+    font-size: 2.5em;
+}
+
+.questionDiv button {
+    background-color: #71eeb8;
+    color:#042449;
+    width: 11vw;
+    margin:2vh 2vw;
+    height: 8vh;
+    float:left;
+    text-align: center;  
+}
+
+.UserList {
+    width: 25vw;
+    margin:0;
+    min-height: 8vh;
+    text-align: center; 
+    box-sizing: border-box;
+    padding: 2vh 2vw;
+    font-size: 1.2em; 
+}
+
+.userName {
+    float:left;
+    width: 15vw;
+    text-align: left;  
+}
+
+.userScore {
+    float:left;
+    width: 6vw;
+    text-align: center;  
+}
+
+.leaderboardEntry {    background-color: #71eeb8; color:#000000;  }
+
+.leaderboardEntry:nth-child(1) {    background-color: #f9a602;  }
+.leaderboardEntry:nth-child(2) {    background-color: #c0c0c0;  }
+.leaderboardEntry:nth-child(3) {    background-color: #a97142;  }
+
+
+.messageBoard {
+    background-color: #042449;
+}
+
+.MessageList {
+    width: 25vw;
+    margin:0;
+    text-align: left; 
+    box-sizing: border-box;
+    padding: 1vh 2vw;
+    font-size: 1.2em;
+}
+
+.message {
+    background-color: #71eeb8;
+    height: 82vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.message::webkit-scrollbar {display:none;}
+
+.messageHeader {
+    height: 8vh;
+    background-color: #042449;
+    color: #71eeb8;
+}
+
+.sendMessage {
+    background-color: #042449;
+    color:#71eeb8;
+    width: 5vw;
+    height: 7vh;
+    float:left;
+    text-align: center; 
+}
+
+.messageInput {
+    float: left;
+    width: 19vw;
+    height: 6vh;
+}
+
+.loginWrapper {
+    margin:30vh 30vw;
+
+}
