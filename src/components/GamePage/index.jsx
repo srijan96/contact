@@ -143,8 +143,11 @@ class HomePage extends React.Component{
             
             for(var i = 0; i<users.length;i++)
             {
-                var user={username: users[i][0], score: users[i][1]};
-                userList[i]=user;
+                //3rd element checks if user has left
+                if(users[i][2]!=""){
+                    var user={username: users[i][0], score: users[i][1]};
+                    userList[i]=user;
+                }
             }
             
             console.log(userList);
