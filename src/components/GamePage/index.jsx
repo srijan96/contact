@@ -137,16 +137,17 @@ class HomePage extends React.Component{
         //Refresh user data in other pages
         socket.on("refresh data", (users) => {
             
-            const userList = this.state.users;
+            const userList = [];
             users.sort(this.compareSecondColumn);
-            console.log(users);
+            console.log("REFRESH DATA"  + users);
             
             for(var i = 0; i<users.length;i++)
             {
                 //3rd element checks if user has left
                 if(users[i][2]!=""){
+                    console.log("User i:" + users[i]);
                     var user={username: users[i][0], score: users[i][1]};
-                    userList[i]=user;
+                    userList.push(user);
                 }
             }
             
