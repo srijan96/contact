@@ -12,13 +12,13 @@ class HomePage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            currentUser: "none",
-            currentWord: "none",
-            revealedWord: "none",
-            currentQuestion: "none",
-            currentAnswer: "none",
-            thinker: "none",
-            questionSetter: "none",
+            currentUser: "",
+            currentWord: "",
+            revealedWord: "",
+            currentQuestion: "",
+            currentAnswer: "",
+            thinker: "",
+            questionSetter: "",
             users : [
                     /*{username: "sukalyan", state:"wordmaker", points: 25},
                     {username: "souradb", state: "questionmaker", points: 100},
