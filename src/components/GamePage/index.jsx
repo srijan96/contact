@@ -24,14 +24,14 @@ class HomePage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            currentUser: "none",
+            currentUser: "",
             currentWord: "",
-            revealedWord: "none",
+            revealedWord: "",
             wordLen: 0,
-            currentQuestion: "none",
-            currentAnswer: "none",
+            currentQuestion: "",
+            currentAnswer: "",
             thinker: "none",
-            questionSetter: "none",
+            questionSetter: "",
             message:  "",
             messageBoard: [],
             users : [
