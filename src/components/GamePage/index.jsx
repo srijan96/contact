@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 var os = require( 'os' );
 
 
-var socket = socketIOClient("https://contact-server.herokuapp.com");
+var socket = socketIOClient("localhost:5000");
 
 const User = props => (
     <div className="UserList">
@@ -172,7 +172,7 @@ class HomePage extends React.Component{
             this.setState({questionViewDisplay: "none"});
         });
 
-        socket.on("question added", (user, question) => {
+        socket.on("question added ", (user, question) => {
             this.setState({addQuestionDisplay: "none"});
             this.setState({currentQuestion: question});
             this.setState({questionViewDisplay: "block"});
@@ -451,6 +451,21 @@ class HomePage extends React.Component{
         );
     }
 
+    checkDBConnection() {
+
+        console.log("MONGO DB!");
+        const users = this.state.users;
+        console.log(users);
+
+        socket.emit("save result", this.state.currentUser, {question:"who?", answer:"me."});
+    }
+
+    checkDBConnectionFetch() {
+
+        console.log("MONGO DB Again!");
+        socket.emit("fetch data");
+    }
+
     render(){
 
         return(
@@ -474,10 +489,23 @@ class HomePage extends React.Component{
             
                 <div className = "homePageWrapper" style={{display:this.state.homePageDisplay}}>
                     
-                    { /*This will be based on user state */ } 
+                    {/*This will be based on user state */ } 
                         
                         <div className="centralItem startGamePage" style={{display:this.state.startPage}}>
                             <button className = "startButton" onClick = {this.startButtonClicked.bind(this)}>Start Game</button>
+
+                        <div className="db save check">
+                            <button className = "check Button" onClick = {this.checkDBConnection.bind(this)}>
+                                DB save Check
+                            </button>
+                        </div>
+
+                        <div className="db fetch check">
+                            <button className="fetch Button" onClick= {this.checkDBConnectionFetch.bind(this)}>
+                                DB fetch check
+                            </button>
+                        </div>
+
                         </div>
                             {this.renderWord()}
 
