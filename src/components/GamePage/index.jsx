@@ -5,6 +5,8 @@ var os = require( 'os' );
 
 
 var socket = socketIOClient("https://contact-server.herokuapp.com");
+//var socket = socketIOClient("localhost:5000");
+
 
 const User = props => (
     <div className="UserList">
@@ -26,6 +28,7 @@ class HomePage extends React.Component{
         this.state = {
             currentUser: "",
             currentWord: "",
+            currentGuess: "",
             revealedWord: "",
             wordLen: 0,
             currentQuestion: "",
@@ -54,6 +57,7 @@ class HomePage extends React.Component{
             showLeaderBoard: "none",
             addQuestionDisplay: "none",
             wordEntryDisplay: "block",
+            guessViewDisplay: "none",
             lockButtonDisabled: false,
             endpoint: "http://127.0.0.1:3001"
         };
@@ -86,6 +90,7 @@ class HomePage extends React.Component{
             this.setState({wordEntryDisplay: "block"});
             this.setState({addQuestionDisplay: "none"});
             this.setState({questionViewDisplay: "none"});
+            this.setState({guessViewDisplay: "none"});
             this.setState({lockButtonDisplay: "none"});
             this.setState({currentWord: ""});
             this.setState({revealedWord: ""});
@@ -102,7 +107,7 @@ class HomePage extends React.Component{
             
             this.setState({loginDisplay: "none"});
             this.setState({homePageDisplay: "block"});
-        
+            
             if(this.state.gameStarted === false)
                 this.setState({startPage:"block"});
             else
@@ -112,6 +117,7 @@ class HomePage extends React.Component{
             this.setState({revealedWord: word});
 
             if(gameSession == true && word != ""){
+                this.setState({guessViewDisplay: "block"});
                 if(qLocked === ""){
                     this.setState({lockButtonDisplay: "block"});
                     this.setState({addQuestionDisplay: "none"});
@@ -170,6 +176,7 @@ class HomePage extends React.Component{
             this.setState({wordEntryDisplay: "none"});
             this.setState({contactViewDisplay: "none"});
             this.setState({questionViewDisplay: "none"});
+            this.setState({guessViewDisplay: "block"});
         });
 
         socket.on("question added", (user, question) => {
@@ -232,6 +239,10 @@ class HomePage extends React.Component{
         this.setState({currentQuestion: e.target.value});
     }
 
+    handleGuess(e){
+        this.setState({currentGuess: e.target.value});
+    }
+
     handleAddAnswer(e){
         this.setState({currentAnswer: e.target.value});
     }
@@ -274,18 +285,6 @@ class HomePage extends React.Component{
         }
     }
 
-    //Function to render question maker
-    renderQuestionMaker()
-    {
-
-    }
-
-    //Function to render Contact UI
-    renderContactPage()
-    {
-
-    }
-
     renderWord(){
         var remWord = this.state.currentWord.substr(this.state.revealedWord.length,this.state.currentWord.length);
         var blanks = "";
@@ -326,12 +325,20 @@ class HomePage extends React.Component{
         socket.emit("unlock question", this.state.currentUser);
     }
 
+    onClickPass(){
+        socket.emit("handle answer", this.state.currentUser, "");
+    }
+
     onClickContact() {
         socket.emit("handle contact", this.state.currentUser, this.state.currentAnswer);
     }
 
     onClickAnswer() {
         socket.emit("handle answer", this.state.currentUser, this.state.currentAnswer);
+    }
+
+    onClickGuess() {
+        socket.emit("word guess", this.state.currentUser, this.state.currentGuess);
     }
 
     sendMessageClicked(){
@@ -372,12 +379,23 @@ class HomePage extends React.Component{
             </div>
         )} else {
         return(
-            <div className = "centralItem contactView" style = {{display: this.state.contactViewDisplay}}>
+            <div className = "centralItem answerView" style = {{display: this.state.contactViewDisplay}}>
                 <input className ="contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickAnswer.bind(this)} className = "submitAnswer">Answer</button>
+                <button onClick = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
             </div>
         ) 
         }
+    }
+
+    renderGuessView(){
+        if(this.state.currentUser !== this.state.thinker){
+            return(
+                <div className = "centralItem guessView" style = {{display: this.state.guessViewDisplay}}>
+                    <input className = "guessEntryText" onChange = {this.handleGuess.bind(this)} placeholder = "Type your Guess here" type = "text"></input>
+                    <button onClick = {this.onClickGuess.bind(this)} className = "Guess">Guess</button>
+                </div>
+            )}
     }
 
     renderQuestionView() {
@@ -489,7 +507,9 @@ class HomePage extends React.Component{
                         
                             {this.renderContactView()}
 
-                        {this.renderQuestionInterface()}
+                            {this.renderQuestionInterface()}
+
+                            {this.renderGuessView()}
 
                 </div>
 

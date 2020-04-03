@@ -100,6 +100,17 @@ body{
     text-align: center;  
 }
 
+.answerView button {
+    background-color: #71eeb8;
+    color:#042449;
+    width: 11vw;
+    margin:2vh 2vw;
+    height: 8vh;
+    float:left;
+    text-align: center;  
+}
+
+
 .UserList {
     width: 25vw;
     margin:0;
