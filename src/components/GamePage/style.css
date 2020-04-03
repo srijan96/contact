@@ -77,10 +77,10 @@ body{
 }
 .centralItem button {
     background-color: #71eeb8;
-    color:#042449;
+    color:#575d64;
     width: 20vw;
     margin:3vh 5vw;
-    height: 10vh;
+    height: 6vh;
     float:left;
     text-align: center;  
     border-radius: 1vw;
@@ -90,12 +90,16 @@ body{
     font-size: 2.5em;
 }
 
+.QuestionView {
+    min-height: 4vh;
+}
+
 .questionDiv button {
     background-color: #71eeb8;
     color:#042449;
     width: 11vw;
     margin:2vh 2vw;
-    height: 8vh;
+    height: 6vh;
     float:left;
     text-align: center;  
 }
@@ -105,7 +109,7 @@ body{
     color:#042449;
     width: 11vw;
     margin:2vh 2vw;
-    height: 8vh;
+    height: 6vh;
     float:left;
     text-align: center;  
 }
