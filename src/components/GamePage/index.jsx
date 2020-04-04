@@ -325,8 +325,12 @@ class HomePage extends React.Component{
         socket.emit("unlock question", this.state.currentUser);
     }
 
-    onClickPass(){
+    onClickPassByThinker(){
         socket.emit("handle answer", this.state.currentUser, "");
+    }
+
+    onClickPass(){
+        socket.emit("handle pass", this.state.currentUser);
     }
 
     onClickContact() {
@@ -376,16 +380,21 @@ class HomePage extends React.Component{
             <div className = "centralItem contactView" style = {{display: this.state.contactViewDisplay}}>
                 <input className = "contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickContact.bind(this)} className = "Contact">Contact</button>
+                <button onClick = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
             </div>
         )} else {
         return(
             <div className = "centralItem answerView" style = {{display: this.state.contactViewDisplay}}>
                 <input className ="contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickAnswer.bind(this)} className = "submitAnswer">Answer</button>
-                <button onClick = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
+                <button onClick = {this.onClickPassByThinker.bind(this)} className = "passAnswer">Pass</button>
             </div>
         ) 
         }
+    }
+
+    renderHintView(){
+
     }
 
     renderGuessView(){
