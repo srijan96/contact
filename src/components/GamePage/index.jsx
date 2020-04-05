@@ -1,11 +1,9 @@
 import React from 'react'
 import "./style.css"
 import socketIOClient from "socket.io-client";
-var os = require( 'os' );
 
-
-var socket = socketIOClient("https://contact-server.herokuapp.com");
-//var socket = socketIOClient("localhost:5000");
+// var socket = socketIOClient("https://contact-server.herokuapp.com");
+var socket = socketIOClient("localhost:5000");
 
 
 const User = props => (
@@ -354,7 +352,7 @@ class HomePage extends React.Component{
     renderQuestionInterface(){
 
         return(
-            <div className = "centralItem questionDiv" style = {{display: this.state.addQuestionDisplay}}>
+            <div className = "centralItem questionDiv twoButtonsCombinedView" style = {{display: this.state.addQuestionDisplay}}>
                 <input className = "QuestionEntryText" onChange = {this.handleAddQuestion} placeholder = "Add Question" type = "text"></input>
                 <input className = "AnswerEntryText" onChange = {this.handleAddAnswer} placeholder = "Add Answer" type = "text"></input>
                 <button onClick = {this.onClickAsk.bind(this)} className = "AskQuestion">Ask</button> 
@@ -377,14 +375,14 @@ class HomePage extends React.Component{
     renderContactView(){
         if(this.state.currentUser !== this.state.thinker){
         return(
-            <div className = "centralItem contactView" style = {{display: this.state.contactViewDisplay}}>
+            <div className = "centralItem contactView twoButtonsCombinedView" style = {{display: this.state.contactViewDisplay}}>
                 <input className = "contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickContact.bind(this)} className = "Contact">Contact</button>
                 <button onClick = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
             </div>
         )} else {
         return(
-            <div className = "centralItem answerView" style = {{display: this.state.contactViewDisplay}}>
+            <div className = "centralItem answerView twoButtonsCombinedView" style = {{display: this.state.contactViewDisplay}}>
                 <input className ="contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickAnswer.bind(this)} className = "submitAnswer">Answer</button>
                 <button onClick = {this.onClickPassByThinker.bind(this)} className = "passAnswer">Pass</button>
