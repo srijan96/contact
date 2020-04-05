@@ -94,17 +94,7 @@ body{
     min-height: 4vh;
 }
 
-.questionDiv button {
-    background-color: #71eeb8;
-    color:#042449;
-    width: 11vw;
-    margin:2vh 2vw;
-    height: 6vh;
-    float:left;
-    text-align: center;  
-}
-
-.answerView button {
+.twoButtonsCombinedView button {
     background-color: #71eeb8;
     color:#042449;
     width: 11vw;
