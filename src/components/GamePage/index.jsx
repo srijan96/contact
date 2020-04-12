@@ -187,6 +187,8 @@ class HomePage extends React.Component{
             console.log("QUESTION : " + user + question);
             
             this.setState({time: 90});
+            clearInterval(this.timer);
+
             this.timer = setInterval(() => {
                 const timeLeft = this.state.time;
                 
