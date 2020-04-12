@@ -3,7 +3,7 @@ import "./style.css"
 import socketIOClient from "socket.io-client";
 
 var socket = socketIOClient("https://contact-server.herokuapp.com");
-// var socket = socketIOClient("localhost:5000");
+//var socket = socketIOClient("localhost:5000");
 
 
 const User = props => (
@@ -57,6 +57,7 @@ class HomePage extends React.Component{
             wordEntryDisplay: "block",
             guessViewDisplay: "none",
             lockButtonDisabled: false,
+            time: 0,
             endpoint: "http://127.0.0.1:3001"
         };
         this.handleAddUser = this.handleAddUser.bind(this);
@@ -184,6 +185,19 @@ class HomePage extends React.Component{
             if(user !== this.state.currentUser)
                 this.setState({contactViewDisplay: "block"});
             console.log("QUESTION : " + user + question);
+            
+            this.setState({time: 90});
+            this.timer = setInterval(() => {
+                const timeLeft = this.state.time;
+                
+                if (timeLeft > 0) {
+                    this.setState({time:timeLeft-1});
+                }
+
+                if (timeLeft == 0) {
+                    clearInterval(this.timer);
+                }
+            }, 1000)
         });
 
         socket.on("update score", leaderboard => {
@@ -431,6 +445,7 @@ class HomePage extends React.Component{
             <>
             <div className = "messageHeader">
                 <h1>MesageBoard</h1>
+                <h1 className = "timerClass" >Time left: {this.state.time}</h1>
             </div>
             
             <div className = "message">

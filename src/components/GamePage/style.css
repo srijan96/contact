@@ -159,16 +159,19 @@ body{
 .message::webkit-scrollbar {display:none;}
 
 .messageHeader {
-    height: 8vh;
+    height: 10vh;
     background-color: #042449;
     color: #71eeb8;
 }
 
+.timerClass {
+    color: rgb(231, 52, 52);
+}
 .sendMessage {
     background-color: #042449;
     color:#71eeb8;
     width: 5vw;
-    height: 7vh;
+    height: 5vh;
     float:left;
     text-align: center; 
 }
@@ -176,7 +179,7 @@ body{
 .messageInput {
     float: left;
     width: 19vw;
-    height: 6vh;
+    height: 5vh;
 }
 
 .loginWrapper {
