@@ -224,6 +224,11 @@ class HomePage extends React.Component{
             this.setState({wordLen: len});
         });
 
+        socket.on("disconnect", () => {
+            alert("You have been disconnected. Wait trying to reconnect..");
+            socket.emit("add user", this.state.currentUser);
+        })
+
         socket.on("chat message", (msg) => {
             var messageList = this.state.messageBoard;
             console.log("CHAT MESSAGE");
@@ -446,7 +451,6 @@ class HomePage extends React.Component{
         return(
             <>
             <div className = "messageHeader">
-                <h1>MesageBoard</h1>
                 <h1 className = "timerClass" >Time left: {this.state.time}</h1>
             </div>
             
@@ -484,7 +488,7 @@ class HomePage extends React.Component{
         return(
             <>
             <div className = "messageHeader">
-            <h1>Leaderboard</h1>
+            <h1>KO9TAKT</h1>
             </div>
             <div className = "leader">
                 {userList}
