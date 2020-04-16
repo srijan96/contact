@@ -2,7 +2,10 @@ import React from 'react'
 import "./style.css"
 import socketIOClient from "socket.io-client";
 
-var socket = socketIOClient("https://contact-server.herokuapp.com");
+var socket = socketIOClient("https://contact-server.herokuapp.com",{
+    transports: ['websocket'],
+    upgrade: false
+});
 //var socket = socketIOClient("localhost:5000");
 
 
@@ -203,6 +206,9 @@ class HomePage extends React.Component{
         });
 
         socket.on("update score", leaderboard => {
+            this.setState({time: 0});
+            clearInterval(this.timer);
+
             const userList = this.state.users;
 
             for( var i = 0; i<leaderboard.length; i++)
@@ -226,6 +232,7 @@ class HomePage extends React.Component{
 
         socket.on("disconnect", () => {
             alert("You have been disconnected. Wait trying to reconnect..");
+            socket.connect();
             socket.emit("add user", this.state.currentUser);
         })
 
