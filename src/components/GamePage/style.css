@@ -8,6 +8,7 @@ body{
     overflow: hidden;
     background-color: #052e5c;
     background-image: url('./background.png');
+    background-size: cover;
 }
 
 .leaderBoard{
@@ -23,7 +24,7 @@ body{
 .homePageWrapper{
     background-color: #052e5c;
     background-image: url('./background.png');
-
+    background-size: cover;
     width:50vw;
     height:100vh;
     float: left;
@@ -80,7 +81,7 @@ body{
     opacity:0.8;
     font-family: inherit;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 15px;
 }
 .centralItem button {
     background-color: #71eeb8;
@@ -93,7 +94,7 @@ body{
     border-radius: 1vw;
     font-family: inherit;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .word{
@@ -114,7 +115,7 @@ body{
     text-align: center;  
     font-family: inherit;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 
