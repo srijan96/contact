@@ -6,6 +6,7 @@ body{
     padding:0;
     overflow: hidden;
     background-color: #052e5c;
+    background-image: url('./background.png');
 }
 
 .leaderBoard{
@@ -20,6 +21,8 @@ body{
 
 .homePageWrapper{
     background-color: #052e5c;
+    background-image: url('./background.png');
+
     width:50vw;
     height:100vh;
     float: left;
