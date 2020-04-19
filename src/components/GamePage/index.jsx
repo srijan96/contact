@@ -1,6 +1,9 @@
 import React from 'react'
 import "./style.css"
+import "./mobile.css"
 import socketIOClient from "socket.io-client";
+import Responsive from 'react-responsive-decorator';
+
 
 var socket = socketIOClient("https://contact-server.herokuapp.com",{
     transports: ['websocket'],
@@ -21,6 +24,7 @@ const User = props => (
       <div className="messageValue">{props.message}</div>
     </div>
   )
+
 
 class HomePage extends React.Component{
 
@@ -47,6 +51,7 @@ class HomePage extends React.Component{
                     {username: "saptarshi", state: "questionmaker", points: 350},
                     {username: "anixd", state: "questionmaker", points: 400},*/
                     ],
+            isMobile: false,
             response: false,
             gameStarted: false,
             loginDisplay: "block",
@@ -59,6 +64,7 @@ class HomePage extends React.Component{
             addQuestionDisplay: "none",
             wordEntryDisplay: "block",
             guessViewDisplay: "none",
+            messageBoxDisplay: "none",
             lockButtonDisabled: false,
             time: 0,
             endpoint: "http://127.0.0.1:3001"
@@ -77,6 +83,16 @@ class HomePage extends React.Component{
     }
 
     componentDidMount(){
+
+
+        this.props.media({ minWidth: 768 }, () => {
+            this.setState({isMobile: false});
+        });
+       
+        this.props.media({ maxWidth: 768 }, () => {
+            this.setState({ isMobile: true});
+        });
+
         const endpt = this.state.endpoint;
         //socket = socketIOClient(endpt);
         //On getting game started event change to game page
@@ -84,9 +100,10 @@ class HomePage extends React.Component{
             this.setState({startPage: "none"});
             
             //To handle not show home page contents in login page if someone clicks start
-            if(this.state.loginDisplay === "none")
+            if(this.state.loginDisplay === "none"){
                this.setState({homePageDisplay: "block"});
-
+               this.setState({messageBoxDisplay: "block"}); 
+            }
             console.log(thinkerName);    
             this.setState({thinker: thinkerName});
             this.setState({wordEntryDisplay: "block"});
@@ -109,11 +126,14 @@ class HomePage extends React.Component{
             
             this.setState({loginDisplay: "none"});
             this.setState({homePageDisplay: "block"});
-            
+            this.setState({messageBoxDisplay: "block"}); 
+
             if(this.state.gameStarted === false)
                 this.setState({startPage:"block"});
-            else
+            else {
                 this.setState({homePageDisplay: "block"});
+                this.setState({messageBoxDisplay: "block"}); 
+            }
             this.setState({showLeaderBoard: "block"});
 
             this.setState({revealedWord: word});
@@ -267,8 +287,9 @@ class HomePage extends React.Component{
 
     handleGuess(e){
         this.setState({currentGuess: e.target.value});
-    }
 
+    }
+    
     handleAddAnswer(e){
         this.setState({currentAnswer: e.target.value});
     }
@@ -304,7 +325,7 @@ class HomePage extends React.Component{
         if(this.state.currentUser === this.state.thinker){
             return(
             <div className = "centralItem wordSubmit" style = {{display: this.state.wordEntryDisplay}}>
-                <input placeholder = "Enter the word you're thinking" className = "wordEntryText" onChange = {this.handleAddWord} type = "text"></input>
+                <input placeholder = "Enter the word you're thinking" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className = "wordEntryText" onChange = {this.handleAddWord} type = "text"></input>
                 <button onClick = {this.addWord.bind(this)} className = "submitWord">Submit Word</button>
             </div>
             )
@@ -324,14 +345,14 @@ class HomePage extends React.Component{
 
         if( this.state.currentUser === this.state.thinker && this.state.currentWord){
             return(
-                <div className = "centralItem word">
+                <div className = "word">
                 <p class = "revealedColor">{this.state.revealedWord} <span class = "remainingColor">{remWord}</span></p>
                 </div>
             )
         }
         else{
             return(
-                <div className = "centralItem word">
+                <div className = "word">
                 <p> <span class = "revealedColor">{this.state.revealedWord}</span> <span class = "remainingColor">{blanks}</span></p>
                 </div>
             )
@@ -371,6 +392,18 @@ class HomePage extends React.Component{
         socket.emit("word guess", this.state.currentUser, this.state.currentGuess);
     }
 
+    onFocus(){
+        if(this.state.isMobile == true) {
+        this.setState({showLeaderBoard: "none"});
+        this.setState({messageBoxDisplay: "none"});
+        }
+    }
+
+    onBlur() {
+        this.setState({showLeaderBoard: "block"});
+        this.setState({messageBoxDisplay: "block"});
+    }
+
     sendMessageClicked(){
         socket.emit("send message", this.state.currentUser, this.state.message);
         this.setState({message:""});
@@ -381,8 +414,8 @@ class HomePage extends React.Component{
 
         return(
             <div className = "centralItem questionDiv twoButtonsCombinedView" style = {{display: this.state.addQuestionDisplay}}>
-                <input className = "QuestionEntryText" onChange = {this.handleAddQuestion} placeholder = "Add Question" type = "text"></input>
-                <input className = "AnswerEntryText" onChange = {this.handleAddAnswer} placeholder = "Add Answer" type = "text"></input>
+                <input className = "QuestionEntryText" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} onChange = {this.handleAddQuestion} placeholder = "Add Question" type = "text"></input>
+                <input className = "AnswerEntryText" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} onChange = {this.handleAddAnswer} placeholder = "Add Answer" type = "text"></input>
                 <button onClick = {this.onClickAsk.bind(this)} className = "AskQuestion">Ask</button> 
                 <button onClick = {this.onClickCancel.bind(this)} className = "CancelAskQuestion">Cancel</button>
             </div>
@@ -404,14 +437,14 @@ class HomePage extends React.Component{
         if(this.state.currentUser !== this.state.thinker){
         return(
             <div className = "centralItem contactView twoButtonsCombinedView" style = {{display: this.state.contactViewDisplay}}>
-                <input className = "contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
+                <input onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className = "contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickContact.bind(this)} className = "Contact">Contact</button>
                 <button onClick = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
             </div>
         )} else {
         return(
             <div className = "centralItem answerView twoButtonsCombinedView" style = {{display: this.state.contactViewDisplay}}>
-                <input className ="contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
+                <input onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className ="contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
                 <button onClick = {this.onClickAnswer.bind(this)} className = "submitAnswer">Answer</button>
                 <button onClick = {this.onClickPassByThinker.bind(this)} className = "passAnswer">Pass</button>
             </div>
@@ -427,7 +460,7 @@ class HomePage extends React.Component{
         if(this.state.currentUser !== this.state.thinker){
             return(
                 <div className = "centralItem guessView" style = {{display: this.state.guessViewDisplay}}>
-                    <input className = "guessEntryText" onChange = {this.handleGuess.bind(this)} placeholder = "Type your Guess here" type = "text"></input>
+                    <input className = "guessEntryText" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} onChange = {this.handleGuess.bind(this)} placeholder = "Type your Guess here" type = "text"></input>
                     <button onClick = {this.onClickGuess.bind(this)} className = "Guess">Guess</button>
                 </div>
             )}
@@ -436,7 +469,7 @@ class HomePage extends React.Component{
     renderQuestionView() {
         return(
             <div className = "centralItem QuestionView" style = {{display: this.state.questionViewDisplay}}>
-                Current Question : {this.state.currentQuestion}
+                Q:   {this.state.currentQuestion}
             </div>
         )    
     }
@@ -495,7 +528,7 @@ class HomePage extends React.Component{
         return(
             <>
             <div className = "messageHeader">
-            <h1>KO9TAKT</h1>
+            <h1 className = "ko9taktHeader">KO9TAKT</h1>
             </div>
             <div className = "leader">
                 {userList}
@@ -511,7 +544,7 @@ class HomePage extends React.Component{
             <div className = "fullPage">
                 {/*Login Component*/}
         
-                <div className = "centralItem loginWrapper" style={{display:this.state.loginDisplay}}>
+                <div className = "loginWrapper" style={{display:this.state.loginDisplay}}>
                     <h1>ko9takt</h1><br/>
                     <div class = "loginForm">
                         <input class ="loginText" placeholder = "Enter username" type = "text" onChange={this.handleAddUser}></input><br/>
@@ -536,9 +569,9 @@ class HomePage extends React.Component{
 
                             {this.renderWordMaker()}
 
-                            {this.renderAskQuestionButton()}
-
                             {this.renderQuestionView()}
+
+                            {this.renderAskQuestionButton()}
                         
                             {this.renderContactView()}
 
@@ -548,7 +581,7 @@ class HomePage extends React.Component{
 
                 </div>
 
-                <div className = "messageBoard" style={{display:this.state.homePageDisplay}}>
+                <div className = "messageBoard" style={{display:this.state.messageBoxDisplay}}>
                     {this.renderMessageBoard()}
                     <input value = {this.state.message} onKeyDown={this.handleKeyPress} onChange = {this.handleMessageInput} placeholder = "Write message" type = "text" className = "messageInput"></input>
                     <button  onClick = {this.sendMessageClicked.bind(this)} className = "sendMessage">Send</button>
@@ -559,4 +592,4 @@ class HomePage extends React.Component{
     }
 }
 
-export default HomePage
+export default Responsive(HomePage)
