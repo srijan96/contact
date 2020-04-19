@@ -244,3 +244,48 @@ body{
     text-align: center;  
     border-radius: 1vw;
 }
+
+.timer {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0px 10vw;
+    text-align: center;
+}
+
+.timer p {
+      display: inline-block;
+      line-height: 10px;
+      margin-left: 10px;
+      font-size: 1.5em;
+}
+  
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+    svg circle {
+      stroke-dasharray: 113px;
+      stroke-dashoffset: 0px;
+      stroke-linecap: round;
+      stroke-width: 4px;
+      stroke: red;
+      fill: none;
+    }
+  
+    @keyframes countdown {
+        from {
+          stroke-dashoffset: 0px;
+        }
+        to {
+          stroke-dashoffset: 113px;
+        }
+      }  
+  
+  .countingDown svg circle {
+    animation: countdown linear;
+  }

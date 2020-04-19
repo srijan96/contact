@@ -232,12 +232,30 @@
         margin: 0;
     }
     
-    .timerClass {
-        color: rgb(231, 52, 52);
-        font-size: 1.8em;
-        margin: 0 auto;
-        margin-left: -20vw;
+    .timer {
+        position: relative;
+        width: 45px;
+        height: 45px;
+        margin: 0px 18vw;
+        text-align: center;
     }
+    
+    .timer p {
+          display: inline-block;
+          line-height: 3px;
+          margin-left: 5px;
+          font-size: 1.5em;
+    }
+      
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 45px;
+        height: 45px;
+        transform: rotateY(-180deg) rotateZ(-90deg);
+      }
+    
     .sendMessage {
         background-color: #042449;
         color:#71eeb8;

@@ -67,6 +67,8 @@ class HomePage extends React.Component{
             messageBoxDisplay: "none",
             lockButtonDisabled: false,
             time: 0,
+            timerInProgress: false,
+            animDuration: 0,
             endpoint: "http://127.0.0.1:3001"
         };
         this.handleAddUser = this.handleAddUser.bind(this);
@@ -211,16 +213,17 @@ class HomePage extends React.Component{
             
             this.setState({time: 90});
             clearInterval(this.timer);
-
+            this.setState({timerInProgress: true});
+            this.setState({animDuration: this.state.time +'s'})
             this.timer = setInterval(() => {
                 const timeLeft = this.state.time;
-                
                 if (timeLeft > 0) {
                     this.setState({time:timeLeft-1});
                 }
 
                 if (timeLeft == 0) {
                     clearInterval(this.timer);
+                    this.setState({timerInProgress: false})
                 }
             }, 1000)
         });
@@ -228,7 +231,7 @@ class HomePage extends React.Component{
         socket.on("update score", leaderboard => {
             this.setState({time: 0});
             clearInterval(this.timer);
-
+            this.setState({timerInProgress: false});
             const userList = this.state.users;
 
             for( var i = 0; i<leaderboard.length; i++)
@@ -491,9 +494,13 @@ class HomePage extends React.Component{
         return(
             <>
             <div className = "messageHeader">
-                <h1 className = "timerClass" >Time left: {this.state.time}</h1>
+                <div className={this.state.timerInProgress ? "timer countingDown" : "timer"}>
+                    <p>{this.state.time}</p>
+                        <svg>
+                            <circle r="18" cx="20" cy="20" style={{animationDuration: this.state.animDuration}}></circle>
+                        </svg>
+                </div>
             </div>
-            
             <div className = "message">
                 {msgList}
             </div>
