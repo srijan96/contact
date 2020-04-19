@@ -39,7 +39,7 @@
         color:#042449;
         width: 30vw;
         margin:3vw 20vw;
-        height: 6vw;
+        height: 6vh;
         float:left;
         text-align: center;  
         border-radius: 1vw;
@@ -150,9 +150,9 @@
         float: left;
         background-color: #042449;
         color:#71eeb8;
-        width: 60vw;
-        padding: .5vw 20vw;
-        margin:1vw 20vw;
+        width: 80vw;
+        padding: .5vw 10vw;
+        margin:1vw 10vw;
         min-height:4vw;
         box-sizing:border-box;
         text-align: center;
