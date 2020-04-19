@@ -1,0 +1,286 @@
+@media only screen and (max-device-width: 480px) {
+    body {
+        background-color: red;
+    }
+
+    /* LOGIN  PAGE CSS START*/
+
+    .loginWrapper {
+        margin:30vw 10vw;
+        width: 80vw;
+        float: left;
+        background-color: #042449;
+        color: #71eeb8;
+        padding: 2vw 5vw;
+        min-height: 20vw;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 2vw;
+        background-color: transparent;
+    }
+
+    .loginText {
+        background-color: #ffffff;
+        width: 60vw;
+        margin: 2vw auto;
+        padding: 2vw 2vw;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 1vw;
+        opacity: 0.8;
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 15px;
+        opacity: 1;
+    }
+
+    .loginButton {
+        background-color: #71eeb8;
+        color:#042449;
+        width: 30vw;
+        margin:3vw 20vw;
+        height: 6vw;
+        float:left;
+        text-align: center;  
+        border-radius: 1vw;
+    }
+
+    /* LOGIN  PAGE CSS END*/
+
+
+    /* LEADERBOARD CSS START*/
+
+    .leaderBoard{
+        float: left;
+        background-color: #042449;
+        color:#71eeb8;
+        width: 25vw;
+        height: 60vw;
+        overflow: scroll;
+        text-align:center;
+        left:0;
+        bottom: 0;
+        position: absolute;
+        z-index: 5;
+    }
+
+    .UserList {
+        width: 25vw;
+        margin:0;
+        min-height: 10vw;
+        text-align: center; 
+        box-sizing: border-box;
+        padding: 1vw 2vw;
+        font-size: 1em; 
+    }
+    
+    .userName {
+        float:left;
+        width: 15vw;
+        text-align: left;  
+    }
+    
+    .userScore {
+        float:left;
+        width: 6vw;
+        text-align: center;  
+    }
+    
+    .ko9taktHeader {
+        display: none;
+    }
+
+    /* LEADERBOARD CSS START*/
+    
+    /* CENTRAl COMPONENET CSS START */
+
+    .homePageWrapper{
+        background-color: transparent;
+        background-image: url('./background.png');
+        background-size: cover;    
+        height:120vw;
+        width: 100vw;
+        overflow: scroll;
+    }
+    
+    .centralItem {
+        float: left;
+        background-color: #042449;
+        color:#71eeb8;
+        width: 90vw;
+        padding: 1vw 5vw;
+        margin: 3vw 5vw;
+        min-height:20vw;
+        box-sizing:border-box;
+        text-align: center;
+        border-radius: 2vw;
+        opacity: 0.85;
+    }
+    
+    .centralItem input {
+        background-color: #ffffff;
+        width: 80vw;
+        margin: 0.5vw auto;
+        padding:2vw 1vw;
+        box-sizing:border-box;
+        text-align: center;
+        border-radius: 1vw;
+        opacity:0.8;
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 15px;
+        opacity: 1;
+        height: 10vw;
+    }
+    .centralItem button {
+        background-color: #71eeb8;
+        color:#575d64;
+        width: 30vw;
+        margin:1.5vw 25vw;
+        height: 10vw;
+        float:left;
+        text-align: center;  
+        border-radius: 1vw;
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    .word {
+        float: left;
+        background-color: #042449;
+        color:#71eeb8;
+        width: 60vw;
+        padding: .5vw 20vw;
+        margin:1vw 20vw;
+        min-height:4vw;
+        box-sizing:border-box;
+        text-align: center;
+        border-radius: 2vw;
+        font-size: 1.5em;
+        opacity: .85;
+    }
+
+    .guessView input {
+        width: 55vw;
+        float: left;
+        margin: 0;
+    }
+
+    .guessView button {
+        width: 20vw;
+        float: left;
+        margin: 0;
+        margin-left: 5vw;
+    }
+    
+    .QuestionView {
+        float: left;
+        background-color: #042449;
+        color:#71eeb8;
+        width: 90vw;
+        padding: .5vw 5vw;
+        margin:1vw 5vw;
+        min-height:4vw;
+        box-sizing:border-box;
+        text-align: center;
+        border-radius: 2vw;
+        font-size: 1.2em;
+    }
+    
+    /* CENTRAl COMPONENET CSS END */
+ 
+    /* MESSAGE BOARD START */
+    .messageBoard
+    {
+        float: right;
+        background-color: #71eeb8;
+        color:#002266;
+        width: 75vw;
+        height: 60vw;
+        overflow: hidden;
+        text-align:center;
+        right:0;
+        bottom: 0;
+        position: absolute;
+    }
+
+    .MessageList {
+        width: 75vw;
+        margin:0;
+        text-align: left; 
+        box-sizing: border-box;
+        padding: .5vw 2vw;
+        font-size: 1em;
+    }
+    
+    .message {
+        background-color: #71eeb8;
+        height: 40vw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        margin: 0;
+    }
+    
+    .message::webkit-scrollbar {display:none;}
+    
+    .messageHeader {
+        height: 10vw;
+        background-color: #042449;
+        color: #71eeb8;
+        margin: 0;
+    }
+    
+    .timerClass {
+        color: rgb(231, 52, 52);
+        font-size: 1.8em;
+        margin: 0 auto;
+        margin-left: -20vw;
+    }
+    .sendMessage {
+        background-color: #042449;
+        color:#71eeb8;
+        width: 14vw;
+        height: 12vw;
+        float:left;
+        text-align: center; 
+        border-radius: 1vw;
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 15px;
+        margin: 0;
+    }
+    
+    .messageInput {
+        float: left;
+        width: 60vw;
+        height: 10vw;
+    }
+
+    /* MESSAGE BOARD END */
+    
+
+    
+}
+
+
+/*
+
+@media only screen and (max-device-height: 900px) {
+    .homePageWrapper {
+        height: 120vw;
+    }
+
+    .leaderBoard {
+        height: 60vw;
+    }
+    .messageBoard {
+        height: 60vw;
+    }
+
+    .message {
+        height: 45vw;
+    }
+}
+*/
