@@ -519,7 +519,7 @@ class HomePage extends React.Component{
         const userList = users.map((user, index) =>(
             <div className="leaderboardEntry">
             <User
-            userName={index+1 + ". " + user.username}
+            userName={user.username}
             userScore={user.score}
           />
           <div
