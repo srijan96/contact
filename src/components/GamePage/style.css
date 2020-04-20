@@ -196,10 +196,16 @@ body{
 .sendMessage {
     background-color: #042449;
     color:#71eeb8;
-    width: 5vw;
-    height: 5vh;
+    width: 5.5vw;
+    height: 6vh;
     float:left;
     text-align: center; 
+    margin:0 auto;
+    border-radius: .5vw;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 15px;
+
 }
 
 .messageInput {
