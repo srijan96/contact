@@ -87,11 +87,11 @@ class HomePage extends React.Component{
     componentDidMount(){
 
 
-        this.props.media({ minWidth: 768 }, () => {
+        this.props.media({ minWidth: 480 }, () => {
             this.setState({isMobile: false});
         });
        
-        this.props.media({ maxWidth: 768 }, () => {
+        this.props.media({ maxWidth: 480 }, () => {
             this.setState({ isMobile: true});
         });
 
