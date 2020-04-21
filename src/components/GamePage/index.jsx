@@ -2,6 +2,7 @@ import React from 'react'
 import "./style.css"
 import "./mobile.css"
 import socketIOClient from "socket.io-client";
+import ProgressBar from "../ProgressBar.jsx";
 import Responsive from 'react-responsive-decorator';
 
 
@@ -323,13 +324,18 @@ class HomePage extends React.Component{
         socket.emit("add word", this.state.currentUser, this.state.currentWord);
     }
 
+    onMouseDown() {
+        console.log("Mouse Down event");
+        socket.emit("add word", this.state.currentUser, this.state.currentWord);
+    }
+
     //Function to render Wordmaker
     renderWordMaker(){
         if(this.state.currentUser === this.state.thinker){
             return(
             <div className = "centralItem wordSubmit" style = {{display: this.state.wordEntryDisplay}}>
                 <input placeholder = "Enter the word you're thinking" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className = "wordEntryText" onChange = {this.handleAddWord} type = "text"></input>
-                <button onClick = {this.addWord.bind(this)} className = "submitWord">Submit Word</button>
+                <button onClick = {this.addWord.bind(this)} onMouseDown = {this.onMouseDown.bind(this)} className = "submitWord">Submit Word</button>
             </div>
             )
         }
@@ -573,6 +579,8 @@ class HomePage extends React.Component{
                             <button className = "startButton" onClick = {this.startButtonClicked.bind(this)}>Start Game</button>
                         </div>
                             {this.renderWord()}
+
+                            <ProgressBar percentage = {this.state.time}/>
 
                             {this.renderWordMaker()}
 

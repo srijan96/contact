@@ -55,19 +55,37 @@
         background-color: #042449;
         color:#71eeb8;
         width: 25vw;
-        height: 60vw;
+        height: 40vw;
         overflow: scroll;
         text-align:center;
         left:0;
         bottom: 0;
         position: absolute;
         z-index: 5;
-    }
+        }
+        
+
+        .leaderBoard::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        .leaderBoard::-webkit-scrollbar:vertical {
+            width: 8px;
+        }
+
+        .leaderBoard::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, .5);
+            border-radius: 5px;
+            border: 1px solid #ffffff;
+        }
+        .leaderBoard::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background-color: #ffffff;
+        }    
 
     .UserList {
         width: 25vw;
         margin:0;
-        min-height: 10vw;
+        min-height: 8vw;
         text-align: center; 
         box-sizing: border-box;
         padding: 1vw 2vw;
@@ -85,6 +103,11 @@
         width: 6vw;
         text-align: center;  
     }
+
+
+    .leaderboardEntry:nth-child(1) {    min-height: 10vw;  }
+    .leaderboardEntry:nth-child(2) {    min-height: 9vw;  }
+    .leaderboardEntry:nth-child(3) {    min-height: 9vw;  }
     
     .ko9taktHeader {
         display: none;
@@ -98,7 +121,7 @@
         background-color: transparent;
         background-image: url('./background.png');
         background-size: cover;    
-        height:120vw;
+        height:140vw;
         width: 100vw;
         overflow: scroll;
     }
@@ -197,7 +220,7 @@
         background-color: #71eeb8;
         color:#002266;
         width: 75vw;
-        height: 60vw;
+        height: 40vw;
         overflow: hidden;
         text-align:center;
         right:0;
@@ -216,7 +239,7 @@
     
     .message {
         background-color: #71eeb8;
-        height: 40vw;
+        height: 32vw;
         overflow-y: auto;
         overflow-x: hidden;
         box-sizing: border-box;
@@ -232,35 +255,11 @@
         margin: 0;
     }
     
-    .timer {
-        position: relative;
-        width: 45px;
-        height: 45px;
-        margin: 0px 18vw;
-        text-align: center;
-    }
-    
-    .timer p {
-          display: inline-block;
-          line-height: 3px;
-          margin-left: 5px;
-          font-size: 1.5em;
-    }
-      
-      svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 45px;
-        height: 45px;
-        transform: rotateY(-180deg) rotateZ(-90deg);
-      }
-    
     .sendMessage {
         background-color: #042449;
         color:#71eeb8;
         width: 14vw;
-        height: 12vw;
+        height: 9vw;
         float:left;
         text-align: center; 
         border-radius: 1vw;
@@ -273,13 +272,15 @@
     .messageInput {
         float: left;
         width: 60vw;
-        height: 10vw;
+        height: 8vw;
     }
 
     /* MESSAGE BOARD END */
     
 
-    
+    .messageHeader {
+        display: none;
+    }
 }
 
 
