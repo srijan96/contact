@@ -335,7 +335,7 @@ class HomePage extends React.Component{
             return(
             <div className = "centralItem wordSubmit" style = {{display: this.state.wordEntryDisplay}}>
                 <input placeholder = "Enter the word you're thinking" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className = "wordEntryText" onChange = {this.handleAddWord} type = "text"></input>
-                <button onClick = {this.addWord.bind(this)} onMouseDown = {this.onMouseDown.bind(this)} className = "submitWord">Submit Word</button>
+                <button onMouseDown = {this.addWord.bind(this)} onMouseDown = {this.onMouseDown.bind(this)} className = "submitWord">Submit Word</button>
             </div>
             )
         }
@@ -425,8 +425,8 @@ class HomePage extends React.Component{
             <div className = "centralItem questionDiv twoButtonsCombinedView" style = {{display: this.state.addQuestionDisplay}}>
                 <input className = "QuestionEntryText" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} onChange = {this.handleAddQuestion} placeholder = "Add Question" type = "text"></input>
                 <input className = "AnswerEntryText" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} onChange = {this.handleAddAnswer} placeholder = "Add Answer" type = "text"></input>
-                <button onClick = {this.onClickAsk.bind(this)} className = "AskQuestion">Ask</button> 
-                <button onClick = {this.onClickCancel.bind(this)} className = "CancelAskQuestion">Cancel</button>
+                <button onMouseDown = {this.onClickAsk.bind(this)} className = "AskQuestion">Ask</button> 
+                <button onMouseDown = {this.onClickCancel.bind(this)} className = "CancelAskQuestion">Cancel</button>
             </div>
         )
     }
@@ -447,15 +447,15 @@ class HomePage extends React.Component{
         return(
             <div className = "centralItem contactView twoButtonsCombinedView" style = {{display: this.state.contactViewDisplay}}>
                 <input onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className = "contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
-                <button onClick = {this.onClickContact.bind(this)} className = "Contact">Contact</button>
-                <button onClick = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
+                <button onMouseDown = {this.onClickContact.bind(this)} className = "Contact">Contact</button>
+                <button onMouseDown = {this.onClickPass.bind(this)} className = "passAnswer">Pass</button>
             </div>
         )} else {
         return(
             <div className = "centralItem answerView twoButtonsCombinedView" style = {{display: this.state.contactViewDisplay}}>
                 <input onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} className ="contactEntryText" onChange = {this.handleAddAnswer} placeholder = "Answer" type = "text"></input>
-                <button onClick = {this.onClickAnswer.bind(this)} className = "submitAnswer">Answer</button>
-                <button onClick = {this.onClickPassByThinker.bind(this)} className = "passAnswer">Pass</button>
+                <button onMouseDown = {this.onClickAnswer.bind(this)} className = "submitAnswer">Answer</button>
+                <button onMouseDown = {this.onClickPassByThinker.bind(this)} className = "passAnswer">Pass</button>
             </div>
         ) 
         }
@@ -470,7 +470,7 @@ class HomePage extends React.Component{
             return(
                 <div className = "centralItem guessView" style = {{display: this.state.guessViewDisplay}}>
                     <input className = "guessEntryText" onFocus = {this.onFocus.bind(this)} onBlur = {this.onBlur.bind(this)} onChange = {this.handleGuess.bind(this)} placeholder = "Type your Guess here" type = "text"></input>
-                    <button onClick = {this.onClickGuess.bind(this)} className = "Guess">Guess</button>
+                    <button onMouseDown = {this.onClickGuess.bind(this)} className = "Guess">Guess</button>
                 </div>
             )}
     }
