@@ -8,9 +8,13 @@ import Responsive from 'react-responsive-decorator';
 
 var socket = socketIOClient("https://contact-server.herokuapp.com",{
     transports: ['websocket'],
-    upgrade: false
+    upgrade: false,
+    autoConnect: true
 });
-//var socket = socketIOClient("localhost:5000");
+/*var socket = socketIOClient("localhost:5000", {
+    transports: ['websocket'],
+    autoConnect: true
+});*/
 
 
 const User = props => (
@@ -247,6 +251,12 @@ class HomePage extends React.Component{
         socket.on("round end", () => {
             alert("ROUND HAS ENDED. WAIT FOR NEXT ROUND TO START");
             socket.emit("start");    
+        });
+
+        socket.on("game end", () => {
+            alert("GAME HAS ENDED. START A NEW GAME");
+            this.setState({startPage:"block"});
+            this.setState({homePageDisplay:"none"});
         });
 
         socket.on("reveal word", (word, len) => {
