@@ -13,6 +13,7 @@ var socket = socketIOClient("https://contact-server.herokuapp.com",{
 });
 /*var socket = socketIOClient("localhost:5000", {
     transports: ['websocket'],
+    upgrade: false,
     autoConnect: true
 });*/
 
@@ -266,7 +267,6 @@ class HomePage extends React.Component{
 
         socket.on("disconnect", () => {
             alert("You have been disconnected. Wait trying to reconnect..");
-            socket.connect();
             socket.emit("add user", this.state.currentUser);
         })
 
@@ -280,6 +280,12 @@ class HomePage extends React.Component{
             else
                 messageList.push(msg);
             this.setState({messageBoard: messageList});
+        });
+
+        socket.on('EV: PING', (data) => {
+            console.log("PING RECEIVED FROM SERVER");
+            console.log("SENDING PONG");
+            socket.emit("EV: PONG", this.state.currentUser);
         });
 
         console.log("HIT ENDPOINT");
