@@ -15,10 +15,12 @@ Let me go through the basic rules of the game to get you started with
   * However if the wordsetter fails to answer and one of the guessers answers the question correctly a new letter is unveiled.
   * The round ends when the whole word is unveiled
   * Meanwhile any of the guessers can guess the word and the round ends, however guessing the word wrongly leads to huge penalty
-## Features 
-  
 
-## End Goal
+Some future goals we have thought of are described below
+## Future Goals
+  * Add multiple game room feature
+  * Create a database of trivia questions
+  * Create a database of players
 
 ## Tech Stack
 
@@ -26,3 +28,4 @@ Let me go through the basic rules of the game to get you started with
 * Javascript
 * HTML
 * CSS
+* Database Technology like MongoDB (yet to be finalized)
