@@ -1,5 +1,6 @@
 # Ko9takt
 
+![Landing Page](https://github.com/srijan96/contact/blob/master/public/Screenshot%20from%202021-02-25%2022-46-15.png)
 ## Description
 
 Ko9takt is an interesting twist on the regular trivia games which you can enjoy with your friends.Currently a basic prototype of the game is live at http://ko9takt.herokuapp.com
