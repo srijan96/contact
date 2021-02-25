@@ -17,7 +17,7 @@ Let me go through the basic rules of the game to get you started with
   * The round ends when the whole word is unveiled
   * Meanwhile any of the guessers can guess the word and the round ends, however guessing the word wrongly leads to huge penalty
 
-Some future goals we have thought of are described below
+Some future goals we have thought of are described below. We aim to add more features and are looking for ideas from other contributors 
 ## Future Goals
   * Add multiple game room feature
   * Create a database of trivia questions
