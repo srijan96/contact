@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Ko9takt
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Ko9takt is an interesting twist on the regular trivia games which you can enjoy with your friends.Currently a basic prototype of the game is live at http://ko9takt.herokuapp.com
 
-### `npm start`
+Let me go through the basic rules of the game to get you started with
+* **Basic Rules**
+  * The game has 3 roles, one wordsetter, one qmaster, and guessers (need to come up with better names)
+  * The wordsetter thinks of a word and their aim is to stop the guessers from unveiling it. The role of the wordsetter rotates after each round.
+  * The game starts with the fist letter of the word being unveiled.
+  * All the other players are guessers including the qmaster and their aim is to unveil the word set by the wordsetter. So how do they do that?
+  * Any one of the guessers asks a trivia question to all while the other players including the wordsetter try to answer it
+  * If the wordsetter answers correctly the next letter of the word doesnt get unveiled.
+  * However if the wordsetter fails to answer and one of the guessers answers the question correctly a new letter is unveiled.
+  * The round ends when the whole word is unveiled
+  * Meanwhile any of the guessers can guess the word and the round ends, however guessing the word wrongly leads to huge penalty
+## Features 
+  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## End Goal
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* ReactJS
+* Javascript
+* HTML
+* CSS
