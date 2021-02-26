@@ -5,6 +5,8 @@
 
 Ko9takt is an interesting twist on the regular trivia games which you can enjoy with your friends.Currently a basic prototype of the game is live at http://ko9takt.herokuapp.com
 
+The server side code is available in [this](https://github.com/srijan96/contact-server) repository.
+
 Let me go through the basic rules of the game to get you started with
 * **Basic Rules**
   * The game has 3 roles, one **wordsetter**, one **qmaster**, and **guessers** (need to come up with better names)
